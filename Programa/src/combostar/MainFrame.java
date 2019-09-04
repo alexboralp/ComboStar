@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import model.ComboBuilder;
 import model.Product;
 
 /**
@@ -20,6 +24,9 @@ public class MainFrame extends javax.swing.JFrame {
     
     private final HashMap<String, String> productNameCode;
     private ComboStarAdministrator comboStarAdministrator;
+    private ActionListener actionListenerAddProduct;
+    private ActionListener actionListenerFromCombo;
+    private ActionListener actionListenerFromMainProduct;
 
     /**
      * Creates new form MainFrame
@@ -28,6 +35,29 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         
         productNameCode = new HashMap();
+        actionListenerAddProduct = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+              comboStarAdministrator.addProduct(productNameCode.get(((JButton)e.getSource()).getText()));
+            }
+        };
+        
+        actionListenerFromCombo = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+              comboStarAdministrator.fromCombo(productNameCode.get(((JButton)e.getSource()).getText()));
+            }
+        };
+        
+        actionListenerFromMainProduct = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+              comboStarAdministrator.fromMainProduct(productNameCode.get(((JButton)e.getSource()).getText()));
+            }
+        };
     }
 
     /**
@@ -47,7 +77,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         pnlAdditionals = new javax.swing.JPanel();
         pnlCombos = new javax.swing.JPanel();
-        pnlMainProduct = new javax.swing.JPanel();
+        pnlMainProducts = new javax.swing.JPanel();
         pnlDrinks = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -96,7 +126,7 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        getContentPane().add(pnlMainProduct, gridBagConstraints);
+        getContentPane().add(pnlMainProducts, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -191,30 +221,39 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     
-    public void addCombo() {
-        
+    public void addCombo(ComboBuilder combo) {
+        JRadioButton component = new JRadioButton(combo.getName());
+        addComponent(component, pnlCombos, actionListenerFromCombo);
+        productNameCode.put(combo.getName(), combo.getCode());
     }
     
-    public void addMainProduct() {
-        
+    public void addMainProduct(Product product) {
+        JRadioButton component = new JRadioButton(product.getName());
+        addComponent(component, pnlMainProducts, actionListenerFromMainProduct);
+        productNameCode.put(product.getName(), product.getCode());
     }
     
     public void addDrink(Product product) {
-        JButton btnDrink = new JButton(product.getName());
-        pnlDrinks.add(btnDrink);
+        JButton component = new JButton(product.getName());
+        addComponent(component, pnlDrinks, actionListenerAddProduct);
         productNameCode.put(product.getName(), product.getCode());
-        // add the listener to the jbutton to handle the "pressed" event
-        btnDrink.addActionListener(new ActionListener(){
-          @Override
-          public void actionPerformed(ActionEvent e)
-          {
-            comboStarAdministrator.addProduct(productNameCode.get(((JButton)e.getSource()).getText()));
-          }
-        });
     }
     
-    public void addAdditional() {
+    public void addAdditional(Product product) {
+        JButton component = new JButton(product.getName());
+        addComponent(component, pnlAdditionals, actionListenerAddProduct);
+        productNameCode.put(product.getName(), product.getCode());
+    }
+    
+    public void addComponent(JComponent component, JPanel panel, ActionListener actionListener) {
+        panel.add(component);
         
+        if (component instanceof JButton) {
+            ((JButton)component).addActionListener(actionListener);
+        } else if (component instanceof JRadioButton) {
+            JRadioButton radioButton = (JRadioButton)component;
+            radioButton.addActionListener(actionListener);
+        }
     }
     
     public void setComboString(String string) {
@@ -247,7 +286,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pnlAdditionals;
     private javax.swing.JPanel pnlCombos;
     private javax.swing.JPanel pnlDrinks;
-    private javax.swing.JPanel pnlMainProduct;
+    private javax.swing.JPanel pnlMainProducts;
     private javax.swing.JTextArea txtCombo;
     private javax.swing.JTextArea txtOrder;
     // End of variables declaration//GEN-END:variables
