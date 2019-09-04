@@ -5,17 +5,29 @@
  */
 package combostar;
 
+import controller.ComboStarAdministrator;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import javax.swing.JButton;
+import model.Product;
+
 /**
  *
  * @author alexander
  */
 public class MainFrame extends javax.swing.JFrame {
+    
+    private final HashMap<String, String> productNameCode;
+    private ComboStarAdministrator comboStarAdministrator;
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
+        
+        productNameCode = new HashMap();
     }
 
     /**
@@ -33,41 +45,17 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jrbCombo1 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jPanel3 = new javax.swing.JPanel();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
-        jRadioButton10 = new javax.swing.JRadioButton();
-        jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        pnlAdditionals = new javax.swing.JPanel();
+        pnlCombos = new javax.swing.JPanel();
+        pnlMainProduct = new javax.swing.JPanel();
+        pnlDrinks = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtCombo = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton14 = new javax.swing.JButton();
+        txtOrder = new javax.swing.JTextArea();
+        btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -97,103 +85,22 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         getContentPane().add(jLabel4, gridBagConstraints);
-
-        jButton7.setText("Papas");
-        jPanel1.add(jButton7);
-
-        jButton8.setText("Uvas");
-        jPanel1.add(jButton8);
-
-        jButton9.setText("Patatas");
-        jPanel1.add(jButton9);
-
-        jButton10.setText("Maíz");
-        jPanel1.add(jButton10);
-
-        jButton11.setText("Tres leches");
-        jPanel1.add(jButton11);
-
-        jButton12.setText("Ensalada");
-        jPanel1.add(jButton12);
-
-        jButton13.setText("Puré");
-        jPanel1.add(jButton13);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        getContentPane().add(jPanel1, gridBagConstraints);
-
-        jrbCombo1.setText("Hamburguesa+gaseosa+papas");
-        jrbCombo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCombo1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jrbCombo1);
-
-        jRadioButton1.setText("Pollo+gaseosa+papas");
-        jPanel2.add(jRadioButton1);
-
-        jRadioButton2.setText("Hot dog+gaseosa+puré");
-        jPanel2.add(jRadioButton2);
-
-        jRadioButton3.setText("Pizza+gaseosa");
-        jPanel2.add(jRadioButton3);
-
-        jRadioButton4.setText("Pizza+gaseosa+ensalada+tres leches");
-        jPanel2.add(jRadioButton4);
-
+        getContentPane().add(pnlAdditionals, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        getContentPane().add(jPanel2, gridBagConstraints);
-
-        jRadioButton5.setText("Hamburguesa");
-        jPanel3.add(jRadioButton5);
-
-        jRadioButton6.setText("Sandwich");
-        jPanel3.add(jRadioButton6);
-
-        jRadioButton7.setText("Pollo");
-        jPanel3.add(jRadioButton7);
-
-        jRadioButton8.setText("Wrap");
-        jPanel3.add(jRadioButton8);
-
-        jRadioButton9.setText("Pizza");
-        jPanel3.add(jRadioButton9);
-
-        jRadioButton10.setText("Hot dog");
-        jPanel3.add(jRadioButton10);
-
+        getContentPane().add(pnlCombos, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        getContentPane().add(jPanel3, gridBagConstraints);
-
-        jButton1.setText("Gaseosa");
-        jPanel4.add(jButton1);
-
-        jButton2.setText("Café");
-        jPanel4.add(jButton2);
-
-        jButton3.setText("Té");
-        jPanel4.add(jButton3);
-
-        jButton4.setText("Natural");
-        jPanel4.add(jButton4);
-
-        jButton5.setText("Frozen");
-        jPanel4.add(jButton5);
-
-        jButton6.setText("Batido");
-        jPanel4.add(jButton6);
-
+        getContentPane().add(pnlMainProduct, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        getContentPane().add(jPanel4, gridBagConstraints);
+        getContentPane().add(pnlDrinks, gridBagConstraints);
 
         jLabel5.setText("Combo actual:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -209,9 +116,9 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         getContentPane().add(jLabel6, gridBagConstraints);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtCombo.setColumns(20);
+        txtCombo.setRows(5);
+        jScrollPane1.setViewportView(txtCombo);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -220,9 +127,9 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtOrder.setColumns(20);
+        txtOrder.setRows(5);
+        jScrollPane2.setViewportView(txtOrder);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -231,18 +138,23 @@ public class MainFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(jScrollPane2, gridBagConstraints);
 
-        jButton14.setText("Agregar");
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        getContentPane().add(jButton14, gridBagConstraints);
+        getContentPane().add(btnAgregar, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jrbCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCombo1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jrbCombo1ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,47 +190,65 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void addCombo() {
+        
+    }
+    
+    public void addMainProduct() {
+        
+    }
+    
+    public void addDrink(Product product) {
+        JButton btnDrink = new JButton(product.getName());
+        pnlDrinks.add(btnDrink);
+        productNameCode.put(product.getName(), product.getCode());
+        // add the listener to the jbutton to handle the "pressed" event
+        btnDrink.addActionListener(new ActionListener(){
+          @Override
+          public void actionPerformed(ActionEvent e)
+          {
+            comboStarAdministrator.addProduct(productNameCode.get(((JButton)e.getSource()).getText()));
+          }
+        });
+    }
+    
+    public void addAdditional() {
+        
+    }
+    
+    public void setComboString(String string) {
+        txtCombo.setText(string);
+    }
+    
+    public void setOrderString(String string) {
+        txtOrder.setText(string);
+    }
+    
+    public void setAdministrator(ComboStarAdministrator comboStarAdministrator) {
+        this.comboStarAdministrator = comboStarAdministrator;
+    }
+    
+    public ComboStarAdministrator getAdministrator() {
+        return this.comboStarAdministrator;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
     private javax.swing.ButtonGroup btnGroupComboMain;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JRadioButton jrbCombo1;
+    private javax.swing.JPanel pnlAdditionals;
+    private javax.swing.JPanel pnlCombos;
+    private javax.swing.JPanel pnlDrinks;
+    private javax.swing.JPanel pnlMainProduct;
+    private javax.swing.JTextArea txtCombo;
+    private javax.swing.JTextArea txtOrder;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,10 +18,14 @@ public class ProductFactory implements IPrototypeFactory<Product>{
     public ProductFactory() {
         products = new HashMap();
     }
+    
+    public static Product createNewProduct(String code, String name, int price) {
+        return new Product(code, name, price);
+    }
 
     @Override
     public Product get(String name) {
-        return products.get(name);
+        return products.get(name).clone();
     }
 
     @Override

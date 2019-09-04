@@ -51,7 +51,7 @@ public class Product implements IPrototype<Product>{
     
     @Override
     public String toString() {
-        return code + "\t" + name + "\t" + price;
+        return /*code + "\t" +*/ name + "\t" + price;
     }
 
     @Override
