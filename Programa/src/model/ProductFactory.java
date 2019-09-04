@@ -18,8 +18,6 @@ public class ProductFactory implements IPrototypeFactory<Product>{
     public ProductFactory() {
         products = new HashMap();
     }
-    
-    
 
     @Override
     public Product get(String name) {
