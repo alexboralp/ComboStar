@@ -184,6 +184,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        
+        comboStarAdministrator.addCombo();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
