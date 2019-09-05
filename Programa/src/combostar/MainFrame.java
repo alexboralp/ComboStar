@@ -24,9 +24,9 @@ public class MainFrame extends javax.swing.JFrame {
     
     private final HashMap<String, String> productNameCode;
     private ComboStarAdministrator comboStarAdministrator;
-    private ActionListener actionListenerAddProduct;
-    private ActionListener actionListenerFromCombo;
-    private ActionListener actionListenerFromMainProduct;
+    private final ActionListener actionListenerAddProduct;
+    private final ActionListener actionListenerFromCombo;
+    private final ActionListener actionListenerFromMainProduct;
 
     /**
      * Creates new form MainFrame
@@ -47,7 +47,7 @@ public class MainFrame extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-              comboStarAdministrator.fromCombo(productNameCode.get(((JButton)e.getSource()).getText()));
+              comboStarAdministrator.fromCombo(productNameCode.get(((JRadioButton)e.getSource()).getText()));
             }
         };
         
@@ -55,7 +55,7 @@ public class MainFrame extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-              comboStarAdministrator.fromMainProduct(productNameCode.get(((JButton)e.getSource()).getText()));
+              comboStarAdministrator.fromMainProduct(productNameCode.get(((JRadioButton)e.getSource()).getText()));
             }
         };
     }
@@ -253,6 +253,7 @@ public class MainFrame extends javax.swing.JFrame {
         } else if (component instanceof JRadioButton) {
             JRadioButton radioButton = (JRadioButton)component;
             radioButton.addActionListener(actionListener);
+            btnGroupComboMain.add(radioButton);
         }
     }
     
