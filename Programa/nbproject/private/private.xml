@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/aborbon/Dropbox/Tecnologico/IngenieriaEnComputacion/2019II/DisennoSoftware/Tarea1/ComboStar/Programa/src/controller/ComboStarAdministrator.java</file>
-            <file>file:/C:/Users/aborbon/Dropbox/Tecnologico/IngenieriaEnComputacion/2019II/DisennoSoftware/Tarea1/ComboStar/Programa/src/combostar/MainFrame.java</file>
+            <file>file:/home/alexander/Dropbox/Tecnologico/IngenieriaEnComputacion/2019II/DisennoSoftware/Tarea1/ComboStar/Programa/src/model/ComboBuilder.java</file>
+            <file>file:/home/alexander/Dropbox/Tecnologico/IngenieriaEnComputacion/2019II/DisennoSoftware/Tarea1/ComboStar/Programa/src/controller/ComboStarAdministrator.java</file>
+            <file>file:/home/alexander/Dropbox/Tecnologico/IngenieriaEnComputacion/2019II/DisennoSoftware/Tarea1/ComboStar/Programa/src/combostar/MainFrame.java</file>
+            <file>file:/home/alexander/Dropbox/Tecnologico/IngenieriaEnComputacion/2019II/DisennoSoftware/Tarea1/ComboStar/Programa/src/model/Order.java</file>
         </group>
     </open-files>
 </project-private>

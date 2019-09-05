@@ -51,7 +51,7 @@ public class Combo implements ICalculable{
         for (Product product: products){
             response += product.toString() + "\n";
         }
-        response += this.calculate() + "\n";
+        response += "Total del combo: " + this.calculate() + "\n";
         return response;
     }
 

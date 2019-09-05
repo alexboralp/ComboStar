@@ -51,6 +51,8 @@ public class ComboStar {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 mainFrame = new MainFrame();
+                mainFrame.setTitle("ComboStar");
+                mainFrame.setSize(800, 600);
                 mainFrame.setAdministrator(administrator);
                 administrator.setMainFrame(mainFrame);
                 mainFrame.setVisible(true);
